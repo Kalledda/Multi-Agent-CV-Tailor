@@ -1,6 +1,5 @@
 FREDRIK NYKVIST
 AI OPERATIONS SPECIALIST
-+460708537176 | fredrik.nykvist.97@gmail.com | linkedin.com/in/fredrik-nykvist | Dublin, Ireland
 
 PROFILE:
 AI Operations specialist working at the intersection of metadata, machine learning systems, and regulatory compliance. I translate complex safety frameworks (EU AI Act, U18 Safety) into reliable analytical datasets and taxonomy systems. With a strong background in building annotation-based evaluation frameworks and automating data transformations, I empower cross-functional teams to make data-driven product decisions.
