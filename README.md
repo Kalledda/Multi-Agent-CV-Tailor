@@ -19,7 +19,15 @@ Download and serve the optimal structural weights via Ollama:
 ollama run gemma4:e2b
 ollama run gemma4:e4b
 ```
+### 2. Environment Configurations
+Clone this repository and mount dependencies cleanly inside an isolated environment:
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
 ## 🧠 System Architecture
+```mermaid
 graph TD
     Start([START]) --> AgentA[Agent A: Master Resume Architect]
     AgentA --> AgentB[Agent B: Fact-Checking Auditor]
