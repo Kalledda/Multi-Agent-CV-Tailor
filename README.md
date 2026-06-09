@@ -18,7 +18,8 @@ Download and serve the optimal structural weights via Ollama:
 ```bash
 ollama run gemma4:e2b
 ollama run gemma4:e4b
-
+```
+## 🧠 System Architecture
 graph TD
     Start([START]) --> AgentA[Agent A: Master Resume Architect]
     AgentA --> AgentB[Agent B: Fact-Checking Auditor]
