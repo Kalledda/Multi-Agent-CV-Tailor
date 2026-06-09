@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Service 1: The Ollama AI Model Server
+  ollama-server:
+    image: ollama/ollama:latest
+    container_name: ollama_backend
+    volumes:
+      - ollama_storage:/root/.ollama
+    ports:
+      - "11434:11434"
+    # This block exposes her host NVIDIA GPU directly into the Docker engine
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  # Service 2: Your LangGraph + Streamlit UI Application
+  streamlit-app:
+    build: .
+    container_name: cv_swarm_frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama-server:11434
+    depends_on:
+      - ollama-server
+    restart: unless-stopped
+
+volumes:
+  ollama_storage:

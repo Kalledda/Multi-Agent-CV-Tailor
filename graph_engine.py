@@ -95,9 +95,12 @@ class AgentState(TypedDict):
     final_score: int
     scoring_notes: str
 
-# Local Inference Setup via Ollama
-llm_creative = Ollama(model="gemma4:e2b", temperature=0.5) 
-llm_analytical = Ollama(model="gemma4:e4b", temperature=0.1)
+# Read the environment variable passed by Docker Compose, fallback to standard localhost
+OLLAMA_HOST = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
+
+# Initialize local Gemma models via Ollama pointing to the dynamic host
+llm_creative = Ollama(model="gemma4:e2b", base_url=OLLAMA_HOST, temperature=0.5) 
+llm_analytical = Ollama(model="gemma4:e4b", base_url=OLLAMA_HOST, temperature=0.1)
 
 # =================================================================
 # 4. ACTIVE AGENT NODE LOGIC (A, B, C, D)
