@@ -2,18 +2,6 @@
 
 An enterprise-grade portfolio application showcasing an **Evaluator-Optimizer agentic architecture** designed to match a candidate's master experience data cleanly against specific job descriptions under 60 seconds.
 
-## 🧠 System Architecture Diagram
-The graph engine executes using a custom Directed Acyclic Graph (DAG) state layout:
---------------------------------------------------------------------------------------
-[START] ──>  Agent A (Generator: CV & Cover Letter Creation)
-                   │
-                   ├──> Agent B (Auditor: Core Fact-Checking)
-                   └──> Agent C (Stylist: Copywriting & Format)
-                   │
-         [Conditional Router Check]
-          ├── If Discrepancies found ──> (Loop back to Agent A for repairs)
-          └── If Quality Passed      ──> Agent D (ATS Scoring & Review) ──> [END]
---------------------------------------------------------------------------------------
 ## 🤖 Swarm Node Layout Matrix
 
 | Agent Identity | Role | Target Objective | Execution Constraints |
@@ -30,3 +18,21 @@ Download and serve the optimal structural weights via Ollama:
 ```bash
 ollama run gemma4:e2b
 ollama run gemma4:e4b
+
+## 🧠 System Architecture
+
+```mermaid
+graph TD
+    Start([START]) --> AgentA[Agent A: Master Resume Architect]
+    AgentA --> AgentB[Agent B: Fact-Checking Auditor]
+    AgentA --> AgentC[Agent C: Executive Copywriter]
+    
+    AgentB --> Router{Conditional Router Check}
+    AgentC --> Router
+    
+    Router -- If Passed: False --> AgentA
+    Router -- If Passed: True --> AgentD[Agent D: Predictive ATS Judge]
+    AgentD --> End([END])
+
+    classDef default fill:#1e1e2e,stroke:#cdd6f4,stroke-width:1px,color:#cdd6f4;
+    classDef highlight fill:#f38ba8,stroke:#f38ba8,stroke-width:1px,color:#11111b;
